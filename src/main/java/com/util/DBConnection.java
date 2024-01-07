@@ -11,6 +11,7 @@ public class DBConnection {
 
 		return new Configuration().configure().buildSessionFactory().openSession();
 
+		
 	}
 	
 	public static void main(String[] args) {

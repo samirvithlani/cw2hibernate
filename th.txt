@@ -1,0 +1,7 @@
+Assosiations
+
+one to one :-
+one user can have one account..
+one to many
+many to one
+many to many

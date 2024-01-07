@@ -1,5 +1,8 @@
 package com.controller;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -46,11 +49,51 @@ public class EmployeeController {
 
 	}
 
+	public void getEmployeeData() {
+
+		// load,get
+
+		Session session = DBConnection.getDbConnection();
+		if (session != null) {
+
+			Transaction tr = session.beginTransaction();
+			Criteria criteria = session.createCriteria(EmployeeBean.class);
+			List<EmployeeBean> employees = criteria.list();
+			for (EmployeeBean emp : employees) {
+				System.out.println(emp.geteId());
+				System.out.println(emp.geteName());
+			}
+			tr.commit();
+			session.close();
+
+		}
+
+	}
+
+	public void getUserById() {
+
+		Session session = DBConnection.getDbConnection();
+		if (session != null) {
+
+			Transaction tr = session.beginTransaction();
+			EmployeeBean employeeBean = (EmployeeBean) session.get(EmployeeBean.class, 2);
+			System.out.println(employeeBean.geteName());
+			employeeBean.seteName("amita");
+			employeeBean.seteAge(34);
+			session.update(employeeBean);
+			tr.commit();
+
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 		EmployeeController employeeController = new EmployeeController();
-		//employeeController.addData();
-		employeeController.deleteData();
+		 //employeeController.addData();
+		// employeeController.deleteData();
+		// employeeController.getEmployeeData();
+		employeeController.getUserById();
 
 	}
 }
