@@ -26,6 +26,8 @@
 		<mapping class="com.bean.AccountBean"/>
 		<mapping class = "com.bean.SongsBean"/>
 		<mapping class="com.bean.MovieBean"/>
+		<mapping class="com.bean.ReaderBean"/>
+		<mapping class="com.bean.SubscriptionBean"/>
 	</session-factory>
 
 </hibernate-configuration>	
